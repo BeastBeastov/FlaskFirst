@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Все статьи на сайте
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <H1>Все статьи на сайте</H1>
+
+        {% if articles|length > 0  %}
+            {% for el in articles %}
+            <div class="alert alert-info">
+              <h2>{{ el.title }}</h2>
+              <p>{{ el.intro }}</p>
+              <p><b>{{ el.date.strftime("%d-%b-%Y %H:%M") }} </b></p>
+              <a href="/posts/{{ el.id }}" class="btn btn-warning">Развернуть</a>
+            </div>
+            {% endfor %}
+        {% else  %}
+        <p> На сайте нет статей</p>
+        {% endif %}
+
+</div>
+{% endblock %}
